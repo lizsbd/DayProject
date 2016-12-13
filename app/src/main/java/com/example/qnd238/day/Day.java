@@ -27,18 +27,29 @@ public class Day {
 
     }
     public String preDay(){
-        int preindex = index(day) - 1;
-        return week[preindex];
+        int preindex =0;
+        if(index(day) == 0){
+            preindex = 6;
+        }else {
+            preindex = index(day) - 1;
+        }
+            return week[preindex];
 
     }
     public String addDay(int number){
         int index=0;
-        if(number>=0) {
+        if((number>=0)|| ((number + index(day))>=0)) {
+
              index = (number + index(day)) % 7;
         }
         else {
-            index = 7-(abs(number + index(day)) % 7);
+            if (((number + index(day)) % 7) == 0) {
+                index = 0;
+            } else {
+                index = 7 - (abs(number + index(day)) % 7);
+            }
         }
+
         return week[index];
 
     }
